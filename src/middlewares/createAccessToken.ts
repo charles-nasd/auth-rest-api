@@ -1,7 +1,7 @@
 import { sign } from "jsonwebtoken";
 
-const createAccessToken = (email: string, role: string) => {
-	return sign({ email: email, role: role }, process.env.ACCESS_TOKEN_SECRET!, {
+const createAccessToken = (email: string) => {
+	return sign({ email: email }, process.env.ACCESS_TOKEN_SECRET!, {
 		expiresIn: "1d",
 	});
 };
