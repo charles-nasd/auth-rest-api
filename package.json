@@ -6,7 +6,8 @@
 	"main": "src/index.ts",
 	"license": "MIT",
 	"scripts": {
-		"start": "nodemon --watch './**/*.ts' --exec ts-node --esm src/index.ts"
+		"start": "nodemon --watch './**/*.ts' --exec ts-node --esm src/index.ts",
+		"seed": "ts-node --esm src/seederScript.ts"
 	},
 	"dependencies": {
 		"bcryptjs": "^2.4.3",
