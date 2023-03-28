@@ -1,8 +1,12 @@
 {
 	"name": "auth-rest-api",
 	"version": "1.0.0",
-	"main": "index.js",
+	"description": "Auth flow running with mongdb",
+	"main": "src/index.ts",
 	"license": "MIT",
+	"scripts": {
+		"start": "nodemon --watch './**/*.ts' --exec 'ts-node' src/index.ts"
+	},
 	"dependencies": {
 		"bcryptjs": "^2.4.3",
 		"dotenv": "^16.0.3",
