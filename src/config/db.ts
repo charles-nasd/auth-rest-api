@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 
 dotenv.config();
 
-export const connectDB = async (): Promise<void> => {
+const connectDB = async (): Promise<void> => {
 	const { MONGO_URI, DATABASE_NAME } = process.env;
 
 	try {
@@ -20,3 +20,5 @@ export const connectDB = async (): Promise<void> => {
 		console.error("Failed to connect to DB with error: ", error);
 	}
 };
+
+export default connectDB;
