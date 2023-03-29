@@ -1,8 +1,16 @@
 import express, { Application } from "express";
 
+import { connectDB } from "./config/db";
+import authRouter from "./routes/authRoute";
+
 const app: Application = express();
 
 app.use(express.json()); // Parse incoming request body to JSON
+
+await connectDB(); // Use top level await to start Mongodb connection
+
+// API Routes
+app.use("/api/auth", authRouter); //auth route
 
 const startServer = (port: string) => {
 	try {
@@ -10,7 +18,7 @@ const startServer = (port: string) => {
 			console.log("Server is running successfully 🚀");
 		});
 	} catch (error) {
-		console.error(error);
+		console.error("Server crashed 😢 with error: ", error);
 		process.exit(1);
 	}
 };
