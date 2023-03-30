@@ -2,6 +2,8 @@ import { Request, Response } from "express";
 import createAccessToken from "../middlewares/createAccessToken";
 import UserModel from "../models/userModel";
 import getUserByEmail from "../services/userService";
+import { successResponse } from "../utils/successResponse";
+import { errorResponse } from "../utils/errorResponse";
 
 type TResquestBody = {
 	email: string;
@@ -18,11 +20,25 @@ const loginUser = async (req: Request, res: Response) => {
 
 		const user = await getUserByEmail(email);
 
-		console.log("User data >>", user);
-		res.sendStatus(201);
+		const responseBody = {
+			user: {
+				_id: user?._id,
+				name: user?.name,
+				email: user?.email,
+				password: user?.password,
+				role: user?.role,
+				__v: user?.__v,
+				created_at: user?.createdAt,
+				updated_at: user?.updatedAt,
+			},
+			access_token: createAccessToken(email),
+		};
+		const responseMessage = "User was authenticated successfully";
+
+		res.status(201).json(successResponse(responseMessage, responseBody));
 	} catch (error) {
 		console.error(error);
-		res.sendStatus(402);
+		res.status(422).json(errorResponse("Invalid login credentials!"));
 	}
 };
 
