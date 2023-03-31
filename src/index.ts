@@ -1,10 +1,12 @@
 import express, { Application } from "express";
+import cors from "cors";
 
 import { connectDB } from "./config/db";
 import authRouter from "./routes/authRoute";
 
 const app: Application = express();
 
+app.use(cors());
 app.use(express.json()); // Parse incoming request body to JSON
 
 await connectDB(); // Use top level await to start Mongodb connection
