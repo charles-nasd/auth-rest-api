@@ -18,7 +18,8 @@ const loginUser = async (req: Request, res: Response) => {
 			throw new Error("Please provide the required credentials!");
 		}
 
-		const user = await getUserByEmail(email);
+		const formattedEmail = email.toLocaleLowerCase();
+		const user = await getUserByEmail(formattedEmail);
 
 		const responseBody = {
 			user: {
