@@ -8,9 +8,7 @@ export const connectDB = async (): Promise<void> => {
 
 	try {
 		if (MONGO_URI) {
-			await mongoose.connect(MONGO_URI, {
-				dbName: DATABASE_NAME,
-			});
+			await mongoose.connect(MONGO_URI);
 
 			console.log("Connected to MongoDB successfully 🚀");
 		} else {
