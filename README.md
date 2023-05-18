@@ -8,7 +8,7 @@ Run `yarn` to install packages.
 
 ## Setup your environment variables and Local Database
 
-Add a **.env** file to the root folder of your project with the **.env.example** as a reference and fill in information that matches your db settings. Also, ensure you your local db server is running.
+Add a **.env** file to the root folder of your project using **.env.example** as a reference and fill in the information that matches your db settings. Also, ensure you your local db server is running.
 
 ## Seed the users data to your database
 
